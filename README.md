@@ -38,6 +38,6 @@ const b=100;
  单元格内容  | 单元格内容 | 单元格内容 
  单元格内容  | 单元格内容 | 单元格内容
 
-![图片名称](https://github.com/Angel-xaq/frontEnd-coding/tree/main/pictures)   
+![图片名称](pictures/20230425195256_49ec5.jpeg)   
 [替换文本](https://www.baidu.com/)    
 
