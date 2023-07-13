@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖函数与节流函数</title>
+</head>
+<body>
+    <div id="box">0</div>
+    <script>
+        var box1 = document.getElementById('box');
+        var runTimes = 0;
+        
+        function onMouseMoveEvent() {
+            runTimes++;
+            box1.innerHTML = runTimes;
+        }
+         //防抖
+        function debounce(func, wait) {  
+            let timeout;   //这个只会在首次调用的时候执行
+            return function () {
+                const context = this;  //这一行可以不要，下面直接改为this，因为箭头函数的this指向的就是上下文
+                const args = arguments;
+                if (timeout) clearTimeout(timeout);
+                
+                timeout = setTimeout(() => {
+                    func.apply(context, args)   //调用间隔小于wait的时候不执行
+                }, wait);  
+            }
+        }  
+
+        /**可配置防抖函数
+             * @desc 函数防抖
+             * @param func 函数
+             * @param wait 延迟执行毫秒数
+             * @param immediate true 表立即执行，false 表非立即执行   
+         */
+        /* function debounce(func,wait,immediate) {
+            let timeout;  //闭包
+            return function () {
+                const context = this;
+                const args = arguments;
+                if (timeout) clearTimeout(timeout);
+                if (immediate) {
+                    if (!timeout) func.apply(context, args)  //如果定时器不存在,则说明延时已过,可以立即执行函数
+                    timeout = setTimeout(() => {
+                        timeout = null;
+                    }, wait)
+                }
+                else {
+                    timeout = setTimeout(function(){
+                        func.apply(context, args)
+                    }, wait);
+                }
+            }
+        } */
+
+        //节流函数
+        function throttle(func, wait) {
+            let timeout;
+            return function() {
+                let context = this;
+                let args = arguments;
+                if (!timeout) {   //如果一直调用，那么每隔wait，就+1，如果停止调用，则不会增加，下次调用重新计算时间
+                    timeout = setTimeout(() => {
+                        timeout = null;
+                        func.apply(context, args)
+                    }, wait)
+                }
+            }
+        }
+
+        box1.addEventListener('mousemove',debounce(onMouseMoveEvent, 1000))  //防抖
+        // box1.addEventListener('mousemove',throttle(onMouseMoveEvent, 1000))  //节流
+    </script>  
+</body>
+
+</html>
