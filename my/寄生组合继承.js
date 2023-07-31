@@ -15,22 +15,28 @@ indirect(Child,Parent)
 var child = new Child('a','c')
 console.log(child.n)
 
-
+//我的
 function Super(){
-    this.a =[1,2,3];
+  this.a =[1,2,3];
 }
 
 Super.prototype.say = function(){
-    console.log(11);
+  console.log(11);
 }
 
 function Sub(){
-    Super.call(this);
+  Super.call(this);
 }
 
-Sub.prototype = Object.create(Super.prototype);  //绕开了new Super()
+function inheritPrototype(subType, superType) {
+  var prototype = Object.create(superType.prototype); // 创建对象  绕开了new superType()
+  prototype.constructor = subType;                    // 增强对象
+  subType.prototype = prototype;                      // 指定对象
+}
 
-var sub1=new Sub();  //这里覆盖了上面new Super调用一次的结果
+inheritPrototype(Sub, Super);
+
+var sub1=new Sub(); 
 var sub2=new Sub();
 sub1.a.push(4);
 console.log(sub1.a);
