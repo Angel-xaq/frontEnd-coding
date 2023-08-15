@@ -19,4 +19,7 @@ var a=1;
 test(1)
 console.log(!!' '+!!'')
 
-
+let str ="i am good man";
+let newStr = Array.prototype.slice.call(str);
+console.log(typeof newStr);
+console.log(newStr.reverse().join(""))//nam doog ma i
