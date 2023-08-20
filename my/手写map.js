@@ -13,5 +13,3 @@ Array.prototype.mymap = function(callback, thisArg){
   return result;
 }
 console.log(arr.mymap((v)=>v+1));
-
-console.log(arr.mymap((v)=>v+1));
