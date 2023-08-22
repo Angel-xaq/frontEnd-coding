@@ -13,3 +13,4 @@ Array.prototype.myreduce = function(fn,initialValue){
 }
 console.log(arr.myreduce((a,b)=>a+b));
 console.log(arr.myreduce((a,b)=>a+b,5));
+1
