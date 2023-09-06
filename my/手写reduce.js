@@ -4,13 +4,13 @@
 
 var arr=[1,2,3,4];
 Array.prototype.myreduce = function(fn,initialValue){
-    if(typeof fn !== 'function') throw new TypeError(fn + 'is not a function');   //fn必须是个函数
-    let sum = initialValue===undefined? 0:initialValue;;
-    for(let i=0; i<this.length; i++){
-      sum = fn(sum,this[i],i,this);   //* 注意这里没有call绑定
-    }
-    return sum;
+  if (!Array.isArray(this)) throw new TypeError('this is not an array'); //如果不是数组调用返回错误
+  if(typeof fn !== 'function') throw new TypeError(fn + 'is not a function');   //fn必须是个函数
+  let sum = initialValue===undefined? 0:initialValue;;
+  for(let i=0; i<this.length; i++){
+    sum = fn(sum,this[i],i,this);   //* 注意这里没有call绑定
+  }
+  return sum;
 }
 console.log(arr.myreduce((a,b)=>a+b));
 console.log(arr.myreduce((a,b)=>a+b,5));
-1
