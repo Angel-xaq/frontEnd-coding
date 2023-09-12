@@ -255,3 +255,15 @@ function shellSort(arr){
   }
   var arr = myQucik([32,12,11,78,76,45,36]);
   console.log(arr);
+
+  var Travel =function(root){
+    let res=[];
+    const dfs= function(root){
+      if(root==null) return;
+      res.push(root.val);
+      dfs(root.left);
+      dfs(root.right);
+    }
+    dfs(root);
+    return root;
+  }
