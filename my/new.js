@@ -13,10 +13,10 @@ function myNew(Con, ...args) {
 //构造函数Person
 function Person(name) {
   this.name = name;
-  /* return {
+   return {
     age: 22  // 当构造函数返回对象类型的数据时，会直接返回这个数据， new 操作符无效   console.log(per); 输出{age:22}
-  }; */
-  return '十二点的程序员';  // 而当构造函数返回基础类型的数据，则会被忽略 console.log(per); 输出{name: "你好,new"}
+  }; 
+  // return '十二点的程序员';  // 而当构造函数返回基础类型的数据，则会被忽略 console.log(per); 输出{name: "你好,new"}
 
 }
 let per = myNew(Person, '你好,new');

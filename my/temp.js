@@ -267,3 +267,8 @@ function shellSort(arr){
     dfs(root);
     return root;
   }
+
+
+let [a,b]=["a"];
+let [...c]=[];
+console.log(`${1+'2'}`);
