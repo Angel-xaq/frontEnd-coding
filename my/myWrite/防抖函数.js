@@ -14,12 +14,12 @@ function myDebounce(func,delay){
 
 //加强版，配置立即执行或非立即执行的选项
 //立即执行场景：对于按钮的防点击，例如点赞，心心，收藏等有立即反馈的按钮
-//非立即执行场景：input搜索框，用户输入过一会显示提示
+//非立即执行场景：input搜索框，用户输入过一会显示提示；窗口大小resize，只需窗口调整完成后，计算窗口大小，防止重复渲染
 function myDebounce(func,delay,immediate){
     let timer =null;   
     return function(...args){ 
         if(timer){    
-            clearTimeout(timer);  
+            clearTimeout(timer);    //清空定时器，但是定时器依旧存在，!timer等于false
         }
         if(immediate){
             if(!timer){  //如果定时器不存在，就立即执行函数事件
