@@ -269,6 +269,3 @@ function shellSort(arr){
   }
 
 
-let [a,b]=["a"];
-let [...c]=[];
-console.log(`${1+'2'}`);
