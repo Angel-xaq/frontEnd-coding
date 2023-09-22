@@ -20,5 +20,6 @@ var res = getType(function(){});
 var res = getType(12);
 var res = getType(undefined);
 console.log(res);
+console.log(Object.prototype.toString.call([1,12]))
 
 // 关于split  (" ")如果存在空格，就以空格为界划分数组元素，如果没有空格，就包裹一层为一个元素，("")直接拆成一个一个字符元素

@@ -84,16 +84,15 @@ let a = new MyPromise((resolve, reject) => {
     console.log('第二步');
     setTimeout(() => {
         resolve('这次一定');
-        reject('下次一定');
         console.log('第四步');
     });
 });
 a.then(
-    console.log('第6步'),
-    result => {console.log(result.message)}
+    result => {console.log(result)},
+    error => {console.log(error)}
 ).then(
-    console.log('第7步'),
-    result => {console.log(result.message)}
+    result => {console.log(result)},
+    error => {console.log(error)}
 )
 console.log('第三步');
 
