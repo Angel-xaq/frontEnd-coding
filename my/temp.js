@@ -268,4 +268,27 @@ function shellSort(arr){
     return root;
   }
 
-
+  function fastPower(base, exp, mod) {
+    let res = 1;
+    base = base % mod;
+  
+    while (exp > 0) {
+      if (exp % 2 === 1) {
+        res = (res * base) % mod;
+      }
+  
+      base = (base * base) % mod;
+      exp = Math.floor(exp / 2);
+    }
+  
+    return res;
+  }
+  
+  // 示例使用
+  const base = 2;
+  const exp = Math.pow(10, 9) + 7 - 2;
+  const mod = Math.pow(10, 9) + 7;
+  
+  const result = fastPower(base, exp, mod);
+  console.log(result);
+  console.log(550424600*9)
