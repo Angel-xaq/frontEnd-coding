@@ -292,3 +292,88 @@ function shellSort(arr){
   const result = fastPower(base, exp, mod);
   console.log(result);
   console.log(550424600*9)
+  let arr1=[1,2,3];
+  console.log(Object.keys(arr1));
+
+  function Power(base, exponent, mod)
+{
+    var isGZero=true;//对指数进行判断，决定返回结果是res，还是res的倒数
+    var res=1;
+    base =base%mod;
+    if(exponent==0)
+        return 1;//任何数的0次幂都为1
+    if(exponent<0){
+        exponent=-exponent;//指数设置为正的
+        isGZero=false;
+    }
+    while(exponent>0){
+        if(exponent&1==1){//从指数二进制表示的低位开始计算；可以减少连乘次数
+            res=(res*base)%mod;
+        }
+        base= (base*base)%mod;
+        exponent>>=1;
+    }
+    return isGZero?res:(1/res);
+}
+function Power11(base, exponent)
+{
+    // write code here
+    //方法一：调用幂函数
+    //return Math.pow(base,exponent);
+    
+    //方法二:效率优化
+    //连乘时间复杂度O(n)
+    //当指数exponent很大时，选择快速幂算法，时间复杂度O(logn)
+    //例如：2^13;指数13=1101(二进制数表示)
+    var isGZero=true;//对指数进行判断，决定返回结果是res，还是res的倒数
+    var res=1;
+    if(exponent==0)
+        return 1;//任何数的0次幂都为1
+    if(exponent<0){
+        exponent=-exponent;//指数设置为正的
+        isGZero=false;
+    }
+    while(exponent>0){
+        if(exponent&1==1){//从指数二进制表示的低位开始计算；可以减少连乘次数
+            res=(res*base);
+        }
+        base= (base*base);
+        exponent>>=1;
+    }
+    return isGZero?res:(1/res);
+}
+
+//快速幂+取模
+function quickPow(x, n, mod) {
+  if (x === 0) return 0;
+  if (n < 0) {
+      return 1.0 / parseFloat(quickPowProcess(x, -n, mod));
+  } else {
+      return quickPowProcess(x, n, mod);
+  }
+}
+
+function quickPowProcess(x, n, mod) {
+  let res = BigInt(1);
+  x = x % mod;
+  while (n > 0) {
+      if (n % BigInt(2) == 1) {
+          res = (res * x) % mod;
+      }
+      x = (x * x) % mod;
+      n = n / BigInt(2);
+  }
+  return res;
+}
+let a = BigInt(9);
+let b = BigInt(2);
+let p = BigInt(1000000007); 
+let c = quickPow(b,p-BigInt(2),p);
+let res = (a*c)%p + '';
+if(res.substring(res.length-1) == 'n'){
+  res.slice(0,-1);    //表示保留0~倒数第1位
+}
+console.log(res);
+let f=7000;
+let d = quickPow(BigInt(100),BigInt(-2),p);
+console.log(d)

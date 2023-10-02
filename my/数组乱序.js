@@ -1,9 +1,9 @@
-arr = [1,2,3,4,5,5,6,7,8];
+arr = [1,2,3,4,5,6,7,8];
 console.log(shuffle(arr))
 function shuffle(arr){
   // const len = arr.length;
   // for(let i = 0; i< len; i++){
-  //   let random = Math.floor(Math.random()*len);  //Math.random()函数返回一个浮点数，伪随机数在范围从0 到小于1
+  //   let random = Math.round(Math.random() * (arr.length -1 - i)) + i;;  //Math.random()函数返回一个浮点数，伪随机数在范围从0 到小于1
   //   let temp = arr[random];
   //   arr[random] = arr[i];
   //   arr[i] = temp;
