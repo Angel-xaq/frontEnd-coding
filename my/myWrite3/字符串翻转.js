@@ -3,7 +3,7 @@ let str ="i am happy";
 //1、split方法
 //let newStr = str.split('');
 //2、解构[...str]
-//let newStr = [...str];
+// let newStr = [...str];
 //3、Array.from
 let newStr = Array.from(str);
 //转为数组后调用reverse方法，再用join方法('')转为字符串
