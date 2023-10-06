@@ -5,7 +5,7 @@ Function.prototype.myapply = function (context, args=[]){
   if(args && !(args instanceof Array)){  //这里判断参数是不是数组，因为apply需要传入的是数组
     throw("myapply 只接受数组作为参数");   
   }
-  var context = context || window;  //this可能传入 null
+  context = context || window;  //this可能传入 null
   let fn = Symbol();
   context[fn] = this;               //1、给context添加fn属性,将方法挂载到传入的context的fn属性上
   const res = context[fn](...args); //2、将挂载的方法调用
