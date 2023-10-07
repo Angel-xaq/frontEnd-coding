@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片随鼠标旋转</title>
+    <style>
+        /* 方法1  transition实现*/
+        .image-container {
+            position: relative;
+        }
+
+        .image-container img {
+            height: 500px;
+            transition: transform 3s ease;
+            /*表示当发生transform变换时，它将花费3秒的时间进行平滑过渡，并采用默认的缓动函数（ease） */
+        }
+
+        .image-container:hover img {
+            transform: rotate(360deg);
+        }
+
+        /* 方法2  动画animation实现*/
+        .r_list img{
+            height: 500px;
+        }
+        .r_list:hover img {
+            animation: xycms_xz 3s ease infinite;
+        }
+        @keyframes xycms_xz {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <span class="image-container">
+        <img src="../image.png" alt="My Image1">
+    </span>
+    <br/>
+
+    <span class='r_list'>
+        <img src='../image.png' alt='My Image2'>
+    </span>
+</body>
+
+</html>
