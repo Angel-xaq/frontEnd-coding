@@ -22,12 +22,14 @@
         }
 
         /* 方法2  动画animation实现*/
-        .r_list img{
+        .r_list img {
             height: 500px;
         }
+
         .r_list:hover img {
             animation: xycms_xz 3s ease infinite;
         }
+
         @keyframes xycms_xz {
             0% {
                 transform: rotate(0deg);
@@ -39,15 +41,43 @@
         }
     </style>
 </head>
+
 <body>
     <span class="image-container">
         <img src="../image.png" alt="My Image1">
     </span>
-    <br/>
+    <br />
 
     <span class='r_list'>
         <img src='../image.png' alt='My Image2'>
     </span>
+    <script>
+        function setLocal(key,value){
+            let expireTime = new Data().getTime()+10*60*1000;
+            const obj={
+                value:value,
+                expireTime:expireTime
+            };
+            localStorage.setItem(key,JSON.stringify(obj));
+        }
+
+        function getLocal(key){
+            let item = localStorage.getItem(key);
+            if(!item){
+                return null;
+            }
+            const obj = JSON.parse(item);
+            let expireTime = obj.expireTime;
+            let now = new Data().getTime();
+            if(now>expireTime){
+                localStorage.removeItem(key);
+                return null;
+            }
+            return obj.value;
+        }
+        setLocal("name", 123)
+        console.log(getLocal("name"))
+    </script>
 </body>
 
 </html>
