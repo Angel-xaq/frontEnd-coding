@@ -78,6 +78,10 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
     })
 };
 
+MyPromise.prototype.catch  = function (onRejected) {
+    return this.then(null, onRejected);
+}
+
 //测试
 console.log('第一步');
 let a = new MyPromise((resolve, reject) => {

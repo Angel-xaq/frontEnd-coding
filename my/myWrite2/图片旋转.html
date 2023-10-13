@@ -43,40 +43,46 @@
 </head>
 
 <body>
-    <span class="image-container">
+    <!-- <span class="image-container">
         <img src="../image.png" alt="My Image1">
     </span>
     <br />
 
     <span class='r_list'>
         <img src='../image.png' alt='My Image2'>
-    </span>
+    </span> -->
     <script>
-        function setLocal(key,value){
-            let expireTime = new Data().getTime()+10*60*1000;
-            const obj={
-                value:value,
-                expireTime:expireTime
-            };
-            localStorage.setItem(key,JSON.stringify(obj));
-        }
 
-        function getLocal(key){
-            let item = localStorage.getItem(key);
-            if(!item){
-                return null;
-            }
-            const obj = JSON.parse(item);
-            let expireTime = obj.expireTime;
-            let now = new Data().getTime();
-            if(now>expireTime){
-                localStorage.removeItem(key);
-                return null;
-            }
-            return obj.value;
+        function asyncLoadImg(src) {
+            return new Promise((resolve, reject) => {
+                const img = document.createElement('img')
+                // onload 事件会在页面或图像加载完成后立即发生。
+                img.onload = () => {
+                    resolve(img);
+                }
+
+                img.onerror = () => {
+                    const error = new Error(`图片加载失败，url：${src}`)
+                    reject(error);
+                }
+                img.src = src;
+            });
         }
-        setLocal("name", 123)
-        console.log(getLocal("name"))
+        const url = 'https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF';
+        const url2 = 'https://t7.baidu.com/it/u=963301259,1982396977&fm=193&f=GIF';
+        asyncLoadImg(url)
+            .then(img1 => {
+                console.log(img1);
+                return asyncLoadImg(url2);
+            })
+            .then(img2 => {
+                console.log(img2);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+
     </script>
 </body>
 
