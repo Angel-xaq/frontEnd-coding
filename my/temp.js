@@ -377,3 +377,7 @@ console.log(res);
 let f=7000;
 let d = quickPow(BigInt(100),BigInt(-2),p);
 console.log(d)
+let a1=[1,2,3];
+
+console.log(a1.map(item => item = 2))
+
