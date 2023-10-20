@@ -381,3 +381,12 @@ let a1=[1,2,3];
 
 console.log(a1.map(item => item = 2))
 
+let myArray = ["apple", "banana", "orange", "grape"];
+let ttt = myArray.splice(myArray.indexOf("banana"), 1);
+console.log(myArray); // ["apple", "orange", "grape"]
+console.log(ttt);
+function solve1(num){
+  let rounded = Math.round(num*100)/100;
+  return String(rounded);
+}
+console.log(solve1(3.143500))
