@@ -390,3 +390,56 @@ function solve1(num){
   return String(rounded);
 }
 console.log(solve1(3.143500))
+function to10(hex37) {
+  const base = 37;
+  const digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$";
+  
+  let result = 0;
+  
+  for (let i = 0; i < hex37.length; i++) {
+    const digit = digits.indexOf(hex37[i]);
+    const weight = Math.pow(base, hex37.length - i - 1);
+    result += digit * weight;
+  }
+  
+  return result;
+}
+function mo(){
+
+}
+
+function to37(decimalNum) {
+  const base = 37;
+  const digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$";
+  
+  let result = "";
+  
+  while (decimalNum > 0) {
+    const remainder = decimalNum % base;
+    result = digits[remainder] + result;
+    decimalNum = Math.floor(decimalNum / base);
+  }
+  
+  return result;
+}
+
+
+// function multiply37(num1, num2) {
+//   // 将37进制数转换为10进制数
+//   const decimalNum1 = to10(num1);
+//   const decimalNum2 = to10(num2);
+  
+//   // 计算相乘结果的十进制值
+//   const decimalResult = decimalNum1 * decimalNum2;
+  
+//   // 将十进制结果转换为37进制字符串
+//   const result = to37(decimalResult);
+  
+//   return result;
+// }
+
+// const inputNum1 = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+// const inputNum2 = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+// const output = multiply37(inputNum1, inputNum2);
+
+// console.log(output);
