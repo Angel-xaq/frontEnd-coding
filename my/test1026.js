@@ -26,5 +26,6 @@ numbers.splice(0,8)
 // });
 
 console.log(numbers);
+console.log(1||2&&0);
 
 
