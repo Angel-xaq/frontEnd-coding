@@ -7,21 +7,26 @@
     <title>Document</title>
     <style>
         .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            flex-direction: column;
+            height:100vh;
 
         }
 
         .left {
             border: 1px solid black;
+            height:200px;
         }
 
         .center {
             border: 1px solid black;
+            height:100%;
         }
 
         .right {
             border: 1px solid black;
+            height:200px;
         }
     </style>
 </head>
@@ -29,8 +34,9 @@
 <body>
     <div class="container">
         <div class="left">left</div>
-        <div class="right">right</div>
+        
         <div class="center">center</div>
+        <div class="right">right</div>
     </div>
 
 </body>

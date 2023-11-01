@@ -28,4 +28,7 @@ numbers.splice(0,8)
 console.log(numbers);
 console.log(1||2&&0);
 
-
+var reg=/\d/g;
+var str="11123bcd";
+var res=str.replace(reg,5); //将数字换为a
+console.log(res); 8//a1123bcd 只要匹配到符合规则的就返回
