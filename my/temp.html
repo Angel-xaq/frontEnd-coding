@@ -1,44 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>相邻兄弟元素的外边距重叠</title>
     <style>
-        .container {
-            display: flex;
-            /* grid-template-columns: 1fr 1fr 1fr; */
-            flex-direction: column;
-            height:100vh;
-
-        }
-
-        .left {
-            border: 1px solid black;
-            height:200px;
-        }
-
-        .center {
-            border: 1px solid black;
-            height:100%;
-        }
-
-        .right {
-            border: 1px solid black;
-            height:200px;
-        }
+      .box {
+        width: 600px;
+        height: 100px;
+        line-height: 50px;
+        text-align: center;
+        color: #333;
+      }
+      .box1 {
+        background-color: #f60;
+        margin-bottom: 20px;
+      }
+      .box2 {
+        background-color: #a90;
+        margin-top: -30px;
+      }
     </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="left">left</div>
-        
-        <div class="center">center</div>
-        <div class="right">right</div>
-    </div>
-
-</body>
-
+  </head>
+  <body>
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+  </body>
 </html>
