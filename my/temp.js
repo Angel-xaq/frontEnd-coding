@@ -452,3 +452,15 @@ new Promise(resolve => {
   console.log("promise2");
 });
 console.log("script end");
+
+async function helloAsync() {
+  const result = await new Promise((resolve) =>
+      setTimeout(() => resolve("Hello"))
+  );
+  return result;
+}
+
+helloAsync().then((data) => {
+  console.log("helloAsync返回值：" + JSON.stringify(data));
+});
+

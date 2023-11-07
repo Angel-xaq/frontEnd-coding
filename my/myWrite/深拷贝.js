@@ -20,21 +20,23 @@ console.log(obj2); // {a: 0, b: {c: 0}}
 function deepCopy(obj, cache = new WeakMap()) {
     if (!obj || !(typeof obj === "object" || typeof obj === "function")) return obj;   //处理基本数据类型
     //处理引用类型
-    else {
-        let newObj = Array.isArray(obj) ? [] : {}  //判断obj是数组还是对象
-        if (cache.has(obj)) {    //判断缓存中是否存在对象的拷贝
-            return cache.get(obj);
-        }
-        cache.set(obj, newObj);  //将拷贝对象存入缓存中
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                newObj[key] = deepCopy(obj[key], cache);
-            }
-        }
-        return newObj;
-    }
 
+    let newObj = Array.isArray(obj) ? [] : {}  //判断obj是数组还是对象
+    if (cache.has(obj)) {    //判断缓存中是否存在对象的拷贝
+        return cache.get(obj);
+    }
+    cache.set(obj, newObj);  //将拷贝对象存入缓存中
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = deepCopy(obj[key], cache);
+        }
+    }
+    return newObj;
 }
+// 在 WeakMap 中，键只能是对象引用，不能是基本数据类型。
+// 在 WeakMap 中，当一个键不再被其他对象引用时，该键会自动从 WeakMap 中被移除，因为 WeakMap 对键是弱引用的。
+// WeakMap 没有提供直接的遍历方法或迭代器。由于无法枚举 WeakMap 的键，也无法获得 WeakMap 的大小。
+
 let obj3 = {
     a: 0,
     b: {
