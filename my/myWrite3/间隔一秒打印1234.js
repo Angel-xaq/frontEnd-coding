@@ -21,10 +21,10 @@ for (let i = 0; i < 5; i++) {
 }
 
 
-for(var i = 0; i < 10; i++) {
-	setTimeOut(function(){
+for(var i = 0; i < 10; i++) {   //这个是不对的，输出全是10
+	setTimeout(()=>{
 		console.log(i);
-	})
+	},i * 1000)
 }
 // 先在全局定义变量 i, 然后执行 for 循环，执行一次 for 循环，分别将 i++ 放入函数调用栈队列，setTimeout 放入task队列 一次。
 // 因为需要将函数调用栈队列里的任务执行结束后，再往下执行task任务

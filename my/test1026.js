@@ -32,3 +32,15 @@ var reg=/\d/g;
 var str="11123bcd";
 var res=str.replace(reg,5); //将数字换为a
 console.log(res); 8//a1123bcd 只要匹配到符合规则的就返回
+
+console.log('script start');
+setTimeout(() => { console.log("setTimeout") }, 0);
+new Promise(resolve => {
+  console.log("Promise");
+  resolve();
+}).then(res => {
+  console.log("promise1");
+}).then(res => {
+  console.log("promise2");
+});
+console.log("script end");

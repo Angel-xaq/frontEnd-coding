@@ -54,6 +54,7 @@ function MyPromise(executor) {
 
 }
 
+//这个写的还是有问题，无法链式调用
 MyPromise.prototype.then = function (onFulfilled, onRejected) {
     return new MyPromise((resolve, reject) => {   //这是为了实现链式，所以返回MyPromise对象
         // 首先判断两个参数是否为函数类型，因为这两个参数是可选参数
@@ -92,9 +93,6 @@ let a = new MyPromise((resolve, reject) => {
     });
 });
 a.then(
-    result => {console.log(result)},
-    error => {console.log(error)}
-).then(
     result => {console.log(result)},
     error => {console.log(error)}
 )
