@@ -10,7 +10,11 @@ function jsonToTree(data) {
     data.forEach(item => {
         let parent = map[item.pid];
         if (parent) {
-            (parent.children || (parent.children = [])).push(item);  //根节点新建children属性，再添加对象
+            if (!parent.children) {
+                parent.children = [];
+            }
+            parent.children.push(item);
+            // (parent.children || (parent.children = [])).push(item);  //根节点新建children属性，再添加对象
         }
         else {
             res.push(item);  //根节点
