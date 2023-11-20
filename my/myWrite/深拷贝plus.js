@@ -55,11 +55,11 @@ function deepClone(obj) {
             return result;
         }
         //收集键名（考虑了以Symbol作为key以及不可枚举的属性）
-        const keys = Reflect.ownKeys(data)
+        const keys = Reflect.ownKeys(data);
          //利用Object的getOwnPropertyDescriptors方法可以获得对象的所有属性以及对应的属性描述
-        const allDesc = Object.getOwnPropertyDescriptors(data)
+        const allDesc = Object.getOwnPropertyDescriptors(data);
         // 结合Object的create方法创建一个新对象，并继承传入原对象的原型链，这里得到的result是对data的浅拷贝
-        const result = Object.create(Object.getPrototypeOf(data), allDesc)
+        const result = Object.create(Object.getPrototypeOf(data), allDesc);
         map.set(data, result); //新对象加入到map中，进行记录
         // Object.create()是浅拷贝，所以要判断并递归执行深拷贝
         keys.forEach(key => {
@@ -124,5 +124,6 @@ Object.setPrototypeOf(obj, {
 obj.loop = obj;
 
 const clonedObj = deepClone(obj);
+clonedObj.reg=new RegExp('/我是一个/ig');
 console.log(clonedObj);
-// console.log(obj);
+console.log(obj);
